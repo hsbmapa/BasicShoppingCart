@@ -1,0 +1,36 @@
+<html>
+
+<body>
+
+	<h2>SEC Assignment Register</h2>
+
+
+	<form action="../server/register.php" method="POST">
+
+		Username: <input type="text" name="username" id="username">
+		<br /><br />
+		Password: <input type="password" name="password" id="password">
+		<br /><br />
+		<button type="submit" onclick="hashPassword()">Submit to register</button>
+	</form>
+
+
+	<script src="js/sha256.js"></script>
+	<script type="text/javascript">
+
+		function hashPassword() {
+			var input = document.getElementById('password').value;
+			/***********************
+			/ this is the hash function API that we provide to the students
+			/ they have to link the sha256.js file (sha256.js can be downloaded via blackboard)
+			************************/
+			var hash = SHA256.hash(input);
+
+			document.getElementById("password").innerHTML = hash;
+			document.getElementById("password").value = hash;
+		}
+	</script>
+
+</body>
+
+</html>
