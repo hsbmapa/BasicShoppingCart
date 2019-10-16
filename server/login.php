@@ -19,7 +19,7 @@ include("php_api_folder/rsa.php");
 	$received_password = $_POST['password'];
 
 
-	if ($received_username != "" & $received_password != "") {
+	if ($received_username != "" && $received_password != "") {
 		$find = 0;
 
 		foreach (file('../database/users.txt') as $line) {
