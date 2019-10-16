@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])) {
 			<button type="submit">Log out</button>
 		</FORM>
 
-		<br /><br />This is your shopping cart, only the successful login user can access to here<br /><br />
+		<br /><br />Welcome to the SEC Market <?php echo $_SESSION['user']; ?><br/><br/>
 
 		<FORM ACTION="../server/order.php" method="POST">
 			<table>
