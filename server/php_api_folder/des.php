@@ -47,30 +47,30 @@ function des($key, $message, $encrypt)
 
     if ($mode == 1) { //CBC mode
         $cbcleft = (ord($iv{
-        $m++}) << 24) | (ord($iv{
-        $m++}) << 16) | (ord($iv{
-        $m++}) << 8) | ord($iv{
-        $m++});
+            $m++}) << 24) | (ord($iv{
+            $m++}) << 16) | (ord($iv{
+            $m++}) << 8) | ord($iv{
+            $m++});
         $cbcright = (ord($iv{
-        $m++}) << 24) | (ord($iv{
-        $m++}) << 16) | (ord($iv{
-        $m++}) << 8) | ord($iv{
-        $m++});
+            $m++}) << 24) | (ord($iv{
+            $m++}) << 16) | (ord($iv{
+            $m++}) << 8) | ord($iv{
+            $m++});
         $m = 0;
     }
 
     //loop through each 64 bit chunk of the message
     while ($m < $len) {
         $left = (ord($message{
-        $m++}) << 24) | (ord($message{
-        $m++}) << 16) | (ord($message{
-        $m++}) << 8) | ord($message{
-        $m++});
+            $m++}) << 24) | (ord($message{
+            $m++}) << 16) | (ord($message{
+            $m++}) << 8) | ord($message{
+            $m++});
         $right = (ord($message{
-        $m++}) << 24) | (ord($message{
-        $m++}) << 16) | (ord($message{
-        $m++}) << 8) | ord($message{
-        $m++});
+            $m++}) << 24) | (ord($message{
+            $m++}) << 16) | (ord($message{
+            $m++}) << 8) | ord($message{
+            $m++});
 
         //for Cipher Block Chaining mode, xor the message with the previous result
         if ($mode == 1) {
@@ -205,15 +205,15 @@ function des_createKeys($key)
 
     for ($j = 0; $j < $iterations; $j++) { //either 1 or 3 iterations
         $left = (ord($key{
-        $m++}) << 24) | (ord($key{
-        $m++}) << 16) | (ord($key{
-        $m++}) << 8) | ord($key{
-        $m++});
+            $m++}) << 24) | (ord($key{
+            $m++}) << 16) | (ord($key{
+            $m++}) << 8) | ord($key{
+            $m++});
         $right = (ord($key{
-        $m++}) << 24) | (ord($key{
-        $m++}) << 16) | (ord($key{
-        $m++}) << 8) | ord($key{
-        $m++});
+            $m++}) << 24) | (ord($key{
+            $m++}) << 16) | (ord($key{
+            $m++}) << 8) | ord($key{
+            $m++});
 
         $temp = (($left >> 4 & $masks[4]) ^ $right) & 0x0f0f0f0f;
         $right ^= $temp;
