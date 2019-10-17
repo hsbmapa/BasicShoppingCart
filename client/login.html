@@ -11,7 +11,7 @@
 		Password: <input type="password" name="password" id="password" maxlength="256">
 		<br /><br />
 
-		<button type="submit" onclick="encrypt_password()">Submit to Login</button>
+		<button type="submit" onclick="encrypt_password()">Login</button>
 	</form>
 
 	<script src="js/sha256.js"></script>
@@ -31,7 +31,7 @@
 
 	<script type="text/javascript">
 
-		var public_key = "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzdxaei6bt/xIAhYsdFdW62CGTpRX+GXoZkzqvbf5oOxw4wKENjFX7LsqZXxdFfoRxEwH90zZHLHgsNFzXe3JqiRabIDcNZmKS2F0A7+Mwrx6K2fZ5b7E2fSLFbC7FsvL22mN0KNAp35tdADpl4lKqNFuF7NT22ZBp/X3ncod8cDvMb9tl0hiQ1hJv0H8My/31w+F+Cdat/9Ja5d1ztOOYIx1mZ2FD2m2M33/BgGY/BusUKqSk9W91Eh99+tHS5oTvE8CI8g7pvhQteqmVgBbJOa73eQhZfOQJ0aWQ5m2i0NUPcmwvGDzURXTKW+72UKDz671bE7YAch2H+U7UQeawwIDAQAB-----END PUBLIC KEY-----";
+		var public_key = "-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAqkvKVoYmxMOrxgEn6l8PSTeE2/rKl7NZHam7yvvli+qcKMBPnXUJx6pjuZz3v/raH/od5IMLrWBXCqSdrd90u2GT/phZ3mF2Yaik0M41QZVPyIM1s3oWnpLNYqexAFxIZS1xjeRRo776pp8iFLBU4CvuxK8QR8MuvgXOX0S7O5zLv8EZPEf+tCr6n+NqXGAuIPXKo/aJm8RI5jGv+T64KgcbUfsZDjwh+HqgFtPRs2kUFls2YHQoSR+1u9gLmN67oq6gBhufjwtHjoHpzJ1ueiZXg/bDeANeTe7w5hxzE9qk8Y+csolmasNJwxjQj5vTiDUkmuj74TrNPXpLCdl+2xrLekc7CSjjIhp0RQ8Vc8HQdOFSkJQChbch3leM7baPPBOgCItLRlfBOwPvi7355No00j1AFnmpkSPa/az8PXq/28KGKimqnEHGosgvPy6FXlx5vZyUX8PZJB/b19wKbR+YIv48Iq57pdQDirXvFCJpNYC7KToW7uzUG5E9XO2Kn/B4O4e3oG9MQnmw/WDlDB2SJkr4eihR22WzkQNhlsbMCnxllUbXhXwH+98SnBqHbYgzjK9R54oWw2hE9yu5jhsgoRreLbopbjilnIWaAERhbbGniHALOMiBapjcjyCX85TjQ8FhjrDDP+mGXA0WwsxyMkqDcKxnvajWGvElgVcCAwEAAQ==-----END PUBLIC KEY-----";
 		function RSA_encryption(message) {
 
 			var encrypt = new JSEncrypt();
