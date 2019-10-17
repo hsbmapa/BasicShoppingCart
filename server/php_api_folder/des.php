@@ -279,8 +279,8 @@ function stringToHex($s)
     $hexes = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
     for ($i = 0; $i < strlen($s); $i++) {
         $r .= ($hexes[(ord($s{
-        $i}) >> 4)] . $hexes[(ord($s{
-        $i}) & 0xf)]);
+            $i}) >> 4)] . $hexes[(ord($s{
+            $i}) & 0xf)]);
     }
     return $r;
 }
