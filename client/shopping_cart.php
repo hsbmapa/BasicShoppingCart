@@ -9,25 +9,6 @@ if (!isset($_SESSION['user'])) {
 	<html>
 
 	<head>
-		<style>
-			table {
-				font-family: arial, sans-serif;
-				border-collapse: collapse;
-				width: 400px;
-			}
-
-			td,
-			th {
-				width: 100px;
-				text-align: center;
-				padding: 8px;
-			}
-
-			th {
-				background-color: #4CAF50;
-				color: white;
-			}
-		</style>
 	</head>
 
 	<body>

@@ -55,10 +55,10 @@ include("php_api_folder/rsa.php");
 			echo "<br/>Cannot find the username ->" . $received_username . "<- in the database<br/>";
 		}
 
-		echo "<br/>Go <a href='http://titan.csit.rmit.edu.au/~s3661741/Assignment/'>back</a> to register, login or check the users.txt";
+		echo "<br/>Go <a href='../client/'>back</a> to register, login or check the users.txt";
 	} else {
 		echo "Username and Password cannot be empty!";
-		echo "<br/>Go <a href='http://titan.csit.rmit.edu.au/~s3661741/Assignment/'>back</a> to register, login or check the users.txt";
+		echo "<br/>Go <a href='../client/'>back</a> to register, login or check the users.txt";
 	}
 	?>
 
