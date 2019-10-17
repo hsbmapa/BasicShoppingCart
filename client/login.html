@@ -6,9 +6,9 @@
 
 	<form action="../server/login.php" method="POST">
 
-		Username: <input type="text" name="username" id="username" maxlength="256">
+		Username: <input type="text" name="username" id="username">
 		<br /><br />
-		Password: <input type="password" name="password" id="password" maxlength="256">
+		Password: <input type="password" name="password" id="password">
 		<br /><br />
 
 		<button type="submit" onclick="encrypt_password()">Login</button>
@@ -31,7 +31,7 @@
 
 	<script type="text/javascript">
 
-		var public_key = "-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAqkvKVoYmxMOrxgEn6l8PSTeE2/rKl7NZHam7yvvli+qcKMBPnXUJx6pjuZz3v/raH/od5IMLrWBXCqSdrd90u2GT/phZ3mF2Yaik0M41QZVPyIM1s3oWnpLNYqexAFxIZS1xjeRRo776pp8iFLBU4CvuxK8QR8MuvgXOX0S7O5zLv8EZPEf+tCr6n+NqXGAuIPXKo/aJm8RI5jGv+T64KgcbUfsZDjwh+HqgFtPRs2kUFls2YHQoSR+1u9gLmN67oq6gBhufjwtHjoHpzJ1ueiZXg/bDeANeTe7w5hxzE9qk8Y+csolmasNJwxjQj5vTiDUkmuj74TrNPXpLCdl+2xrLekc7CSjjIhp0RQ8Vc8HQdOFSkJQChbch3leM7baPPBOgCItLRlfBOwPvi7355No00j1AFnmpkSPa/az8PXq/28KGKimqnEHGosgvPy6FXlx5vZyUX8PZJB/b19wKbR+YIv48Iq57pdQDirXvFCJpNYC7KToW7uzUG5E9XO2Kn/B4O4e3oG9MQnmw/WDlDB2SJkr4eihR22WzkQNhlsbMCnxllUbXhXwH+98SnBqHbYgzjK9R54oWw2hE9yu5jhsgoRreLbopbjilnIWaAERhbbGniHALOMiBapjcjyCX85TjQ8FhjrDDP+mGXA0WwsxyMkqDcKxnvajWGvElgVcCAwEAAQ==-----END PUBLIC KEY-----";
+		var public_key = "-----BEGIN PUBLIC KEY-----MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBysdE2PPIWEoSsyll2V1mdDs4iw1EpI+UzUXzxrOu48s1/1mK6XRliqFYVcOjRKaQ+aCrb4ae72WFJ0LzKzGj+s7dKzzoAOhv9mFAEnhXrZEwtJcGQsMb40wJi8x6cQJNqSmBiuvBe6ktKbd3XgOxgXe7VHtS/xPSiB9EopCwvr8RvwO0b/JkOqRRMhdCFw0ok6oySKj2RNAjQib1hjM2Yrril4lznvcbqCmWNx+QnTq7+YxBcj459L7Kc6mQdMa7+aypleQLCDpNFsPE0OkfKc8DRQE9BGf8knd1YYFZ0ZxKKTJx8CtazeisE3aRp6s/6q84Jh+WbwQPIMrcZrSxjAgMBAAE=-----END PUBLIC KEY-----";
 		function RSA_encryption(message) {
 
 			var encrypt = new JSEncrypt();

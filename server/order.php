@@ -89,7 +89,7 @@ include('php_api_folder/des.php');
 	$myfile = fopen("../database/orders.txt", "a") or die("<br/><br/>Unable to open file!");
 	fwrite($myfile, $order_information);
 	fclose($myfile);
-	echo "Order has been added, go to <a href='../database/'>database</a> to check this order information has been added to orders.txt file"
+	echo "Order has been added, go to  <a href='../database/'>database</a> to check this order information has been added to orders.txt file"
 	?>
 </body>
 

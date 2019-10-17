@@ -9,8 +9,10 @@
 
 	$entered_username = $_POST['username'];
 	$entered_password = $_POST['password'];
-	if ($entered_password < 6 && $entered_username != 0) {
+	
+	if ($entered_password < 6 && $entered_username != 1) {
 		echo "Password cannot by less than 5 characters, please click <a href='../client/register.html'>here</a> to try again";
+		
 	} elseif ($entered_username != "" && $entered_password != "") {
 		$find = 0;
 
