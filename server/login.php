@@ -14,7 +14,6 @@ include("php_api_folder/rsa.php");
 		header('Location: ../client/login.html');
 	}
 
-
 	$received_username = $_POST['username'];
 	$received_password = $_POST['password'];
 

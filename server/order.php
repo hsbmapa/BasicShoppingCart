@@ -1,13 +1,8 @@
 <?php
-
 session_start();
-
 include("php_api_folder/rsa.php");
-
 include('php_api_folder/des.php');
 ?>
-
-
 <html>
 
 <head>
@@ -19,12 +14,11 @@ include('php_api_folder/des.php');
 	if (!isset($_POST['DES_key']) or !isset($_POST['cardNumber'])) {
 		header('Location: ../client/shopping_cart.php');
 	}
-
 	$Server_RSA_PrivateKey = get_rsa_privatekey('RSA_keys/private.key');
 	$Customer_DES_key = rsa_decryption($_POST['DES_key'], $Server_RSA_PrivateKey);
 	$recovered_credit_card_number = php_des_decryption($Customer_DES_key, $_POST['cardNumber']);
 
-	$order_information = "\nClient: " . $_SESSION['user'] . "\n";
+	$order_information = "---------------------------------------------------\nClient: " . $_SESSION['user'] . "\n";
 	$order_information = $order_information . "Ordered quantity information: \n";
 	if ($_POST["ProductAquantity"] > 0) {
 		$order_information = $order_information . $_POST["ProductA"] . ": " . $_POST["ProductAquantity"] . " ($" . $_POST["ProductAprice"] . " each)\n";
@@ -73,7 +67,6 @@ include('php_api_folder/des.php');
 			<th><?php echo $_POST["totalPrice"]; ?></th>
 		</tr>
 	</table>
-
 
 	<?php
 

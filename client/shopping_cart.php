@@ -14,7 +14,7 @@ if (!isset($_SESSION['user'])) {
 	<body>
 
 
-		<h3>Welcome to the SEC Market <?php echo $_SESSION['user']; ?></h3>
+		<h2>Welcome to the SEC Market <?php echo $_SESSION['user']; ?></h2>
 
 		<FORM ACTION="../server/logout.php" method="POST">
 			<button type="submit">Log out</button>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['user'])) {
 					<th></th>
 					<th></th>
 					<th></th>
-					<th><button type="submit" id="submit" name="submit" onclick="encrypt_before_submit()">Submit</button></th>
+					<th><button type="submit" id="submit" name="submit" onclick="encryptedSubmit()">Submit</button></th>
 				</tr>
 			</table>
 
@@ -92,7 +92,7 @@ if (!isset($_SESSION['user'])) {
 	<script type="text/javascript" src="js/sha256.js"></script>
 	<script type="text/javascript" src="js/des.js"></script>
 	<script type="text/javascript">
-		function encrypt_before_submit() {
+		function encryptedSubmit() {
 
 			var DES_key = document.getElementById("DES_key").value;
 			var encrypted_DES_key = RSA_encrypt(DES_key);
