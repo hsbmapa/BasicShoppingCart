@@ -9,6 +9,25 @@ if (!isset($_SESSION['user'])) {
 	<html>
 
 	<head>
+		<style>
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 400px;
+			}
+
+			td,
+			th {
+				width: 100px;
+				text-align: center;
+				padding: 8px;
+			}
+
+			th {
+				background-color: #4CAF50;
+				color: white;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -64,7 +83,7 @@ if (!isset($_SESSION['user'])) {
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align: right;">Your DES key:</td>
-					<td colspan="2"><input type="text" name="DES_key" id="DES_key" /></td>
+					<td colspan="2"><input type="text" name="DESKey" id="DESKey" /></td>
 				</tr>
 				</tr>
 				<tr>
@@ -94,12 +113,12 @@ if (!isset($_SESSION['user'])) {
 	<script type="text/javascript">
 		function encryptedSubmit() {
 
-			var DES_key = document.getElementById("DES_key").value;
-			var encrypted_DES_key = RSA_encrypt(DES_key);
-			document.getElementById("DES_key").value = encrypted_DES_key;
+			var DESKey = document.getElementById("DESKey").value;
+			var encrypted_DESKey = RSA_encrypt(DESKey);
+			document.getElementById("DESKey").value = encrypted_DESKey;
 
 			var cardNumber = document.getElementById("cardNumber").value;
-			var encrypted_creditCard = javascript_des_encryption(DES_key, cardNumber);
+			var encrypted_creditCard = javascript_des_encryption(DESKey, cardNumber);
 			document.getElementById("cardNumber").value = encrypted_creditCard;
 
 		}
@@ -125,7 +144,7 @@ if (!isset($_SESSION['user'])) {
 
 			var quantity = parseInt(document.getElementById('ProductAquantity').value) + parseInt(document.getElementById('ProductBquantity').value) + parseInt(document.getElementById('ProductCquantity').value);
 
-			var DES_key = document.getElementById("DES_key").value;
+			var DESKey = document.getElementById("DESKey").value;
 			var cardNumber = document.getElementById("cardNumber").value;
 
 			document.getElementById("Quantity").innerHTML = quantity;

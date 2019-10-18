@@ -1,5 +1,4 @@
 <html>
-
 <body>
 
 	<?php
@@ -7,18 +6,18 @@
 		header('Location: ../client/register.html');
 	}
 
-	$entered_username = $_POST['username'];
-	$entered_password = $_POST['password'];
+	$enteredUsername = $_POST['username'];
+	$enteredPassword = $_POST['password'];
 	
-	if ($entered_password < 6 && $entered_username != "") {
+	if ($enteredPassword < 6 && $enteredUsername != "") {
 		echo "Password cannot by less than 5 characters, please click <a href='../client/register.html'>here</a> to try again";
 		
-	} elseif ($entered_username != "" && $entered_password != "") {
+	} elseif ($enteredUsername != "" && $enteredPassword != "") {
 		$find = 0;
 
 		foreach (file('../database/users.txt') as $line) {
 			list($username, $password) = explode(",", $line);
-			if ($username == $entered_username) {
+			if ($username == $enteredUsername) {
 				$find = 1;
 				break;
 			}
@@ -28,7 +27,7 @@
 			echo "The user already exist!";
 		} else {
 			$file = fopen("../database/users.txt", "a");
-			fwrite($file, $entered_username . "," . $entered_password . "\n");
+			fwrite($file, $enteredUsername . "," . $enteredPassword . "\n");
 			fclose($file);
 			echo "The user has been added to the database/users.txt";
 		}
@@ -42,5 +41,4 @@
 
 
 </body>
-
 </html>

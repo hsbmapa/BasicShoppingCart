@@ -14,20 +14,20 @@ include("php_api_folder/rsa.php");
 		header('Location: ../client/login.html');
 	}
 
-	$received_username = $_POST['username'];
-	$received_password = $_POST['password'];
+	$receivedUsername = $_POST['username'];
+	$receivedPassword = $_POST['password'];
 
 
-	if ($received_username != "" && $received_password != "") {
+	if ($receivedUsername != "" && $receivedPassword != "") {
 		$find = 0;
 
 		foreach (file('../database/users.txt') as $line) {
 			list($username, $hashed_password) = explode(",", $line);
-			if ($username == $received_username) {
+			if ($username == $receivedUsername) {
 				$find = 1;
 
 				$privateKey = get_rsa_privatekey('RSA_keys/private.key');
-				$decrypted = rsa_decryption($received_password, $privateKey);
+				$decrypted = rsa_decryption($receivedPassword, $privateKey);
 
 				$split_value = explode("&", $decrypted);
 
@@ -51,7 +51,7 @@ include("php_api_folder/rsa.php");
 		}
 
 		if ($find == 0) {
-			echo "<br/>Cannot find the username ->" . $received_username . "<- in the database<br/>";
+			echo "<br/>Cannot find the username ->" . $receivedUsername . "<- in the database<br/>";
 		}
 
 		echo "<br/>Go <a href='../client/'>back</a> to register, login or check the users.txt";

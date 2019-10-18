@@ -6,34 +6,52 @@ include('php_api_folder/des.php');
 <html>
 
 <head>
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 400px;
+		}
 
+		td,
+		th {
+			width: 100px;
+			text-align: center;
+			padding: 8px;
+		}
+
+		th {
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
 </head>
 
 <body>
 	<?php
-	if (!isset($_POST['DES_key']) or !isset($_POST['cardNumber'])) {
+	if (!isset($_POST['DESKey']) or !isset($_POST['cardNumber'])) {
 		header('Location: ../client/shopping_cart.php');
 	}
-	$Server_RSA_PrivateKey = get_rsa_privatekey('RSA_keys/private.key');
-	$Customer_DES_key = rsa_decryption($_POST['DES_key'], $Server_RSA_PrivateKey);
-	$recovered_credit_card_number = php_des_decryption($Customer_DES_key, $_POST['cardNumber']);
+	$ServerRSAPrivateKey = get_rsa_privatekey('RSA_keys/private.key');
+	$CustomerDESKey = rsa_decryption($_POST['DESKey'], $ServerRSAPrivateKey);
+	$DecryptedCCNumber = php_des_decryption($CustomerDESKey, $_POST['cardNumber']);
 
-	$order_information = "---------------------------------------------------\nClient: " . $_SESSION['user'] . "\n";
-	$order_information = $order_information . "Ordered quantity information: \n";
+	$orderInformation = "---------------------------------------------------\nClient: " . $_SESSION['user'] . "\n";
+	$orderInformation = $orderInformation . "Ordered quantity information: \n";
 	if ($_POST["ProductAquantity"] > 0) {
-		$order_information = $order_information . $_POST["ProductA"] . ": " . $_POST["ProductAquantity"] . " ($" . $_POST["ProductAprice"] . " each)\n";
+		$orderInformation = $orderInformation . $_POST["ProductA"] . ": " . $_POST["ProductAquantity"] . " ($" . $_POST["ProductAprice"] . " each)\n";
 	}
 	if ($_POST["ProductBquantity"] > 0) {
-		$order_information = $order_information . $_POST["ProductB"] . ": " . $_POST["ProductBquantity"] . " ($" . $_POST["ProductBprice"] . " each)\n";
+		$orderInformation = $orderInformation . $_POST["ProductB"] . ": " . $_POST["ProductBquantity"] . " ($" . $_POST["ProductBprice"] . " each)\n";
 	}
 	if ($_POST["ProductCquantity"] > 0) {
-		$order_information = $order_information . $_POST["ProductC"] . ": " . $_POST["ProductCquantity"] . " ($" . $_POST["ProductCprice"] . " each)\n";
+		$orderInformation = $orderInformation . $_POST["ProductC"] . ": " . $_POST["ProductCquantity"] . " ($" . $_POST["ProductCprice"] . " each)\n";
 	}
-	$order_information = $order_information . "Total price: " . $_POST["totalPrice"] . "\n";
-	$order_information = $order_information . "Credit card number: " . $recovered_credit_card_number . "\n\n\n";
-
+	$orderInformation = $orderInformation . "Total price: " . $_POST["totalPrice"] . "\n";
+	$orderInformation = $orderInformation . "Credit card number: " . $DecryptedCCNumber . "\n\n\n";
 	?>
-	<h1>Confirmation of your order</h1>
+
+	<h2>Confirmation of Order</h2>
 
 	<table>
 		<tr>
@@ -71,18 +89,18 @@ include('php_api_folder/des.php');
 	<?php
 
 	echo "<br/><br/>Received encrypted DES key:<br/>";
-	echo "<textarea rows='7' cols='60'>" . $_POST['DES_key'] . "</textarea>";
+	echo "<textarea rows='6' cols='50'>" . $_POST['DESKey'] . "</textarea>";
 
-	echo "<br/><br/>Recovered DES key: " . $Customer_DES_key;
+	echo "<br/><br/>Recovered DES key: " . $CustomerDESKey;
 
 	echo "<br/><br/>Received encrypted credit card number: " . $_POST['cardNumber'];
 
-	echo "<br/><br/>Recovered credit card number: " . $recovered_credit_card_number;
+	echo "<br/><br/>Decrypted credit card number: " . $DecryptedCCNumber;
 
 	$myfile = fopen("../database/orders.txt", "a") or die("<br/><br/>Unable to open file!");
-	fwrite($myfile, $order_information);
+	fwrite($myfile, $orderInformation);
 	fclose($myfile);
-	echo "Order has been added, go to  <a href='../database/'>database</a> to check this order information has been added to orders.txt file"
+	echo "<br/><br/>Order has been added, go to  <a href='../database/'>database</a> to check this order information has been added to orders.txt file"
 	?>
 </body>
 
